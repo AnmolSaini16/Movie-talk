@@ -1,0 +1,87 @@
+.nav {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    background-color: #032541;
+    transition-timing-function: ease-in-out;
+    transition: all 0.3s;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    top: 0;
+}
+
+.nav__left {
+    display: flex;
+    align-items: center;
+    margin-left: 14px;
+}
+.nav__logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    padding-right: 24px;
+    color: rgb(26,208,177);
+    font-weight: 600;
+}
+.nav__logo > span {
+    color: rgb(3,183,224);
+    font-weight: 400;
+}
+.nav__logo__logo {
+    font-size: 1.4rem !important;
+}
+
+.nav__logo:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.2s ease-in-out;
+}
+.nav__links {
+    padding: 0 10px;  
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: flex;
+}
+.nav__links:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+
+.active {
+    color: rgb(20, 165, 188);
+}
+
+.nav__right {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+
+.nav__profileLogo {
+    object-fit: contain;
+    width: 40px;
+    border-radius: 999px;
+}
+.nav__profileLogo:hover {
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 460px) {
+    .nav__logo {
+        font-size: 1.1rem;
+        padding-right: 6px;
+    }
+
+    .nav__left {
+        margin-left: 5px;
+    }
+
+    .nav__links {
+        padding: 0 7px;
+    }
+}

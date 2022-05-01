@@ -1,0 +1,228 @@
+.movieItem {
+    max-height: 90vh;
+    position: relative;
+}
+
+.movieItem__content {
+    display: flex;
+    padding-top: 100px;
+    padding-bottom: 30px;
+}
+
+.movieItem__leftContent {
+    flex: 0.3;
+}
+.movieItem__leftContent > img {
+    object-fit: contain;
+    height: 450px;
+    border-radius: 12px;
+    margin-left: 100px;
+}
+
+
+.movieItem__rightContent {
+    flex: 0.7;
+    margin-top: 20px;
+    color: whitesmoke;
+    padding-left: 30px;   
+    padding-right: 80px;
+}
+.movieItem__rightContent > h1 {
+    padding-bottom: 5px;
+    
+}
+.movieItem__rightContent__ratingGenre {
+    display: flex;
+    margin-bottom: 30px;
+}
+.movieItem__rightContent__rating {
+    border: 3px solid green;
+    padding: 10px 5px;
+    border-radius: 999px;
+}
+.movieItem__rightContent__genre {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.movieItem__rightContent__genre > span {
+    padding: 5px 6px;
+    font-size: 1rem;
+    margin: 5px;
+    border: 1px solid whitesmoke;
+    border-radius: 999px;
+}
+.movieItem__rightContent__overview {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-bottom: 5px;
+}
+.movieItem__rightContent__player {
+    padding-top: 20px;
+}
+
+
+
+.movie__reviews {
+    width: 82%;
+    margin: 40px auto;
+    overflow-y: scroll;
+    max-height: 580px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.movie__reviews::-webkit-scrollbar {
+    width: 0.5em;
+  }
+   
+.movie__reviews::-webkit-scrollbar-track {
+    background-color: white;
+}
+   
+.movie__reviews::-webkit-scrollbar-thumb {
+    background-color: rgb(214, 211, 211);
+    border-radius: 20px;
+}
+
+.movie__reviews__row {
+    display: flex;
+    margin: 34px 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 20px;
+    padding: 20px;
+
+}
+
+.movie__reviews__row__right__img {
+    width: 40px;
+    border-radius: 999px;
+    margin-right: 8px;
+}
+
+.movie__reviews__row__right > h1 {
+    font-size: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.movie__reviews__row__right__ratingtitle {
+    font-weight: 400 ;
+    font-size: 0.9rem ;
+    background-color: black;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 5px;
+}
+
+.movie__reviews__row__right__writtenBy {
+    color: #6A7A7A;
+}
+
+.movie__reviews__row__right__content {
+    padding-top: 14px;
+}
+
+.movie__reviews__button {
+    color: white;
+    background-image: linear-gradient(to right, rgb(26,208,177), rgb(3,183,224));
+    padding: 4px 15px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.movie__reviews__button__icon {
+    font-size: 1.8rem !important;
+    font-weight: bold !important;
+    padding-left: 4px;
+    padding-top: 4px;
+}
+
+.no__reviews {
+    color: black;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 40px;
+}
+
+@media only screen and (max-height: 750px){
+    .movieItem {
+        height: 100%;
+     }    
+}
+@media only screen and (max-height: 670px){
+    .movieItem {
+        height: 100%;
+     }    
+}
+
+
+@media only screen and (max-width: 935px){
+    .movieItem {
+        max-height: 100%;
+     }
+
+    .movieItem__content {
+        display: grid;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .movieItem__leftContent {
+        justify-content: center;
+        display: flex;
+    }
+    .movieItem__leftContent > img {
+        margin: unset;
+        height: 350px;
+        margin-bottom: 10px;
+    }
+
+    .movieItem__rightContent {
+        padding: unset;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+    .movieItem__rightContent__player {
+        width: 90%;
+        height: 350px;
+        margin-bottom: 20px;
+    }  
+    .movieItem__rightContent__ratingGenre {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 485px) {
+    .movieItem__rightContent__player {
+        width: 90%;
+        height: 200px;
+    }  
+
+    .movieItem__content {
+        padding-top: 50px;
+    }
+
+    .movieItem__rightContent__genre {
+        padding-left: 6px;
+    }
+
+    .movieItem__rightContent__genre > h6 {
+        font-size: 0.8rem;
+    }
+    .movie__reviews {
+        width: 95%;
+    }
+}

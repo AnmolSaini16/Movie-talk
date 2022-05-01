@@ -1,0 +1,17 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: whitesmoke;
+    margin-top: 30px;
+}
+
+.footer__link {
+    text-decoration: none;
+    color: black;
+}
+
+.footer > h2 {
+    font-size: 1.2rem;
+}

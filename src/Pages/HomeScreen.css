@@ -1,0 +1,36 @@
+.homeScreen__rows {
+    margin: 20px 95px;
+}
+
+.homeScreen__rows > h1 {
+    display: flex;
+    margin: 10px 20px;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 180px;
+    border-radius: 30px;
+    color: white;
+    background-image: linear-gradient(to right, rgb(26,208,177), rgb(3,183,224));
+    font-size: 1.8rem;
+}
+
+@media only screen and (max-width: 770px) {
+    .homeScreen__rows {
+        margin: 10px;
+    }
+
+    .homeScreen__rows > h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .homeScreen__rows {
+        margin: 0px;
+    }
+    .homeScreen__rows > h1 {
+        margin-left: 20px;
+    }
+}

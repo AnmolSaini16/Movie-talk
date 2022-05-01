@@ -1,0 +1,57 @@
+.loginScreen {
+    background:linear-gradient(0deg,rgb(1,106,143, 0.4), rgb(3,47,76)), url('https://external-preview.redd.it/Z-mdOCdgw53wluJKQdklW2-WwJEcd3zXoER3YNl-euI.jpg?auto=webp&s=9da2a0406734c547c7bc489c5fa20b091c7ee86c') center no-repeat;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+}
+
+.loginScreen__logo {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: rgb(26,208,177);
+    font-weight: 600;
+}
+.loginScreen__logo > span {
+    color: rgb(3,183,224);
+    font-weight: 400;
+}
+.loginScreen__logo__logo {
+    padding-right: 2px;
+    font-size: 1.4rem !important;
+}
+
+.loginScreen__contents {
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    top: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 25px;
+}
+.loginScreen__contents > h1 {
+    font-size: 2.5rem;
+}
+.loginScreen__contents > h2 {
+    font-weight: 400;
+}
+
+.loginScreen__contents > Button {
+    background-image: linear-gradient(to right, rgb(26,208,177), rgb(3,183,224)) !important;
+    font-size: 1.4rem !important;
+    margin-top: 20px;
+    border-radius: 20px !important;
+    padding: 6px 15px !important;
+    text-transform: inherit;
+}
+
+.loginScreen__contents > Button:hover {
+    background-image: linear-gradient(to right, rgb(13, 160, 135),rgb(8, 137, 167)) !important;
+}

@@ -1,0 +1,25 @@
+.searchPage__movies {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px;
+}
+
+.searchPage > h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+@media only screen and (max-width: 450px) {
+    .searchPage > h1 {
+        font-size: 1.5rem;
+    }
+    .searchPage__movies {
+        margin: unset;
+    }
+}
+@media only screen and (max-width: 580px) {
+    .searchPage__movies {
+        display: inline;
+    }
+}

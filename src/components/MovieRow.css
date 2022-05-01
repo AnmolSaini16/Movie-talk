@@ -1,0 +1,17 @@
+.row {
+    padding: 10px 20px 0 20px;
+}
+.row__movies {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding-top: 10px;
+}
+
+.row__movies::-webkit-scrollbar {
+    visibility: hidden;
+}
+
+.row > h2 {
+    font-size: 1.4rem;
+}
