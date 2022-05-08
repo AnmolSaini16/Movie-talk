@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import MovieItem from './components/MovieItem';
 import TVItem from './components/TvItem';
-import { login, logout, selectuser } from './features/userSlice';
-import { auth } from './Firebase';
+import { selectuser } from './features/userSlice';
+
 import HomeScreen from './Pages/HomeScreen';
 import LoginScreen from './Pages/LoginScreen';
 import Movies from './Pages/Movies';
@@ -14,24 +14,6 @@ import TVshows from './Pages/TVshows';
 
 function App() {
   const user = useSelector(selectuser)
-  const dispatch = useDispatch();
-
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((userauth) => {
-      if (userauth) {
-        dispatch(login({
-          name: userauth.displayName,
-          email: userauth.email,
-          profilePic: userauth.photoURL
-        }))
-      } else {
-        dispatch(logout())
-      }
-    })
-    return unsubscribe;
-  })
-
 
   return (
     <div className="App">

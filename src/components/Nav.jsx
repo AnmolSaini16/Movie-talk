@@ -5,14 +5,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AnimationIcon from "@mui/icons-material/Animation";
-import { auth } from "../Firebase";
-import { selectuser } from "../features/userSlice";
-import { useSelector } from "react-redux";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { logout } from "../features/userSlice";
+import { useDispatch } from "react-redux";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const selector = useSelector(selectuser);
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const [url, setUrl] = useState(null);
 
@@ -63,15 +63,13 @@ const Nav = () => {
         </p>
       </div>
       <div className="nav__right">
-        <img
+        <AccountCircleIcon
           className="nav__profileLogo"
           id="basic-button"
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
-          src={selector.profilePic}
-          alt="Profile"
         />
         <Menu
           id="basic-menu"
@@ -82,8 +80,8 @@ const Nav = () => {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem>Hi {selector.name}!</MenuItem>
-          <MenuItem onClick={() => auth.signOut()}>Logout</MenuItem>
+          <MenuItem>Hi! 🚀</MenuItem>
+          <MenuItem onClick={() => dispatch(logout())}>Logout</MenuItem>
         </Menu>
       </div>
     </div>

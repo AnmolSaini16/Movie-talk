@@ -35,20 +35,18 @@
 
 .nav__logo:hover {
     cursor: pointer;
-    transform: scale(1.05);
-    transition: 0.2s ease-in-out;
 }
 .nav__links {
-    padding: 0 10px;  
+    margin: 0 10px;  
     color: whitesmoke;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1rem;
     display: flex;
 }
 .nav__links:hover {
     cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.2s ease-in-out;
+    color: rgb(20, 165, 188);
+    transition: 0.2s all;
 }
 
 .active {
@@ -62,9 +60,8 @@
 }
 
 .nav__profileLogo {
-    object-fit: contain;
-    width: 40px;
-    border-radius: 999px;
+    font-size: 2rem !important;
+    color: whitesmoke;
 }
 .nav__profileLogo:hover {
     cursor: pointer;
@@ -82,6 +79,6 @@
     }
 
     .nav__links {
-        padding: 0 7px;
+        margin: 0 7px;
     }
 }
