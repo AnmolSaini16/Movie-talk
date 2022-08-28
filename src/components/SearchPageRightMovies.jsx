@@ -27,7 +27,7 @@ const SearchPageRightMovies = ({ params }) => {
   }, [params.searchId]);
 
   const ratingToPercentage = (n) => {
-    return n * 10 + "%";
+    return (n * 10).toFixed() + "%";
   };
 
   const override = css`

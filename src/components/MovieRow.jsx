@@ -3,23 +3,23 @@ import { Link } from "react-router-dom";
 import axios from "../axios";
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
-
+import { useQuery } from "react-query";
 import "./MovieRow.css";
 import RowItem from "./RowItem";
 
 const MovieRow = ({ fetchUrl, title }) => {
-  const [movies, setMovies] = useState([]);
-  let [loading, setLoading] = useState(true);
+  const fetchMovies = (fetchUrl) => {
+    return axios.get(fetchUrl);
+  };
 
-  useEffect(() => {
-    async function getMovies() {
-      const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
-      setLoading(false);
-      return request;
+  const { data, isLoading } = useQuery(
+    ["movies", fetchUrl],
+    async () => await fetchMovies(fetchUrl),
+    {
+      staleTime: Infinity,
     }
-    getMovies();
-  }, [fetchUrl]);
+  );
+  const movies = data?.data?.results;
 
   const override = css`
     display: block;
@@ -28,22 +28,27 @@ const MovieRow = ({ fetchUrl, title }) => {
   `;
 
   return (
-    <div className="row">
-      <h2>{title}</h2>
-      <div className="row__movies">
-        {movies.map((movie) => (
-          <Link to={`/clickedmovieitem/${movie.id}`} key={movie.id}>
-            <RowItem movie={movie} />
-          </Link>
-        ))}
-      </div>
-      <ClipLoader
-        loading={loading}
-        css={override}
-        size={80}
-        speedMultiplier={1.5}
-      />
-    </div>
+    <>
+      {isLoading ? (
+        <ClipLoader
+          loading={isLoading}
+          css={override}
+          size={80}
+          speedMultiplier={1.5}
+        />
+      ) : (
+        <div className="row">
+          <h2>{title}</h2>
+          <div className="row__movies">
+            {movies.map((movie) => (
+              <Link to={`/clickedmovieitem/${movie.id}`} key={movie.id}>
+                <RowItem movie={movie} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

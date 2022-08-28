@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import axios from "../axios";
-
+import { useQuery } from "react-query";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 import "./MovieItem.css";
@@ -10,23 +10,23 @@ import Nav from "./Nav";
 
 const MovieItem = () => {
   const params = useParams();
-  const [movie, setMovie] = useState([]);
   const [reviews, setReviews] = useState([]);
 
   const API_KEY = "edccfc1e796824b9d5eee1575f81badc";
   const baseUrl = "https://image.tmdb.org/t/p/original/";
 
-  useEffect(() => {
-    async function getMovies() {
-      const result = await axios.get(
-        `movie/${params.movieId}?api_key=${API_KEY}&append_to_response=videos`
-      );
-      setMovie(result.data);
-      return result;
-    }
+  function fetchMovie() {
+    return axios.get(
+      `movie/${params.movieId}?api_key=${API_KEY}&append_to_response=videos`
+    );
+  }
 
-    getMovies();
-  }, [params.movieId]);
+  const { data, isLoading } = useQuery(
+    ["movie", params.movieId],
+    async () => await fetchMovie()
+  );
+  const movie = data?.data;
+  console.log(movie);
 
   useEffect(() => {
     async function fetchData() {
@@ -41,7 +41,7 @@ const MovieItem = () => {
   }, [params.movieId]);
 
   const ratingToPercentage = (n) => {
-    return n * 10 + "%";
+    return (n * 10).toFixed() + "%";
   };
 
   const opts = {
@@ -72,12 +72,12 @@ const MovieItem = () => {
           <div className="movieItem__rightContent">
             <h1>
               {movie?.original_name || movie?.name || movie?.title} (
-              {movie.release_date})
+              {movie?.release_date})
             </h1>
             <h4 className="movieItem__rightContent__ratingGenre">
               <span>
                 <h3 className="movieItem__rightContent__rating">
-                  {ratingToPercentage(movie.vote_average)}
+                  {ratingToPercentage(movie?.vote_average)}
                 </h3>
               </span>
               <p className="movieItem__rightContent__genre">
@@ -87,7 +87,7 @@ const MovieItem = () => {
               </p>
             </h4>
             <p className="movieItem__rightContent__overview">Overview</p>
-            <p>{movie.overview}</p>
+            <p>{movie?.overview}</p>
             <YouTube
               className="movieItem__rightContent__player"
               videoId={movie?.videos?.results[0].key}
