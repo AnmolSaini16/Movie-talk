@@ -21,12 +21,11 @@ const MovieItem = () => {
     );
   }
 
-  const { data, isLoading } = useQuery(
+  const { data } = useQuery(
     ["movie", params.movieId],
     async () => await fetchMovie()
   );
   const movie = data?.data;
-  console.log(movie);
 
   useEffect(() => {
     async function fetchData() {
@@ -71,13 +70,15 @@ const MovieItem = () => {
           </div>
           <div className="movieItem__rightContent">
             <h1>
-              {movie?.original_name || movie?.name || movie?.title} (
-              {movie?.release_date})
+              {movie?.original_name || movie?.name || movie?.title}{" "}
+              {movie ? `(${movie.release_date})` : "--"}
             </h1>
             <h4 className="movieItem__rightContent__ratingGenre">
               <span>
                 <h3 className="movieItem__rightContent__rating">
-                  {ratingToPercentage(movie?.vote_average)}
+                  {movie?.vote_average
+                    ? ratingToPercentage(movie?.vote_average)
+                    : "00%"}
                 </h3>
               </span>
               <p className="movieItem__rightContent__genre">

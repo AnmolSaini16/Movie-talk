@@ -9,12 +9,6 @@
     cursor: pointer;
 }
 
-.rowItem__img {
-    max-height: 220px;
-    object-fit: contain;
-    border-radius: 10px;
-    
-}
 
 .rowitem__rating {
     position: absolute;

@@ -11,9 +11,7 @@ const TVRow = ({ fetchUrl, title }) => {
     return axios.get(fetchUrl);
   };
 
-  const { data, isLoading } = useQuery(["TvItems", fetchUrl], getTvShows, {
-    staleTime: Infinity,
-  });
+  const { data, isLoading } = useQuery(["TvItems", fetchUrl], getTvShows);
   const TvItems = data?.data?.results;
 
   const override = css`
