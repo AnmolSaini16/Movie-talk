@@ -6,11 +6,7 @@ import AnimationIcon from "@mui/icons-material/Animation";
 const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
   const [url, setUrl] = useState(null);
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
 
   useEffect(() => {
     setUrl(location.pathname);

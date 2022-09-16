@@ -1,6 +1,6 @@
 import React from "react";
 import "./RowItem.css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import LazyLoad from "react-lazyload";
 
 const RowItem = ({ movie }) => {
   const baseUrl = "https://image.tmdb.org/t/p/original/";
@@ -10,19 +10,15 @@ const RowItem = ({ movie }) => {
   };
 
   const getImage = () => {
-    if (!movie.poster_path)
-      return "https://strykerslev.com/wp-content/uploads/2021/05/noPhoto.png";
-    return `${baseUrl}${movie.poster_path}`;
+    if (movie.poster_path) return `${baseUrl}${movie.poster_path}`;
+    return "https://cdn.shopify.com/s/files/1/0588/5306/4899/t/14/assets/product-placeholder.jpg?v=65808927917748496431643306019";
   };
 
   return (
     <div className="rowitem">
-      <LazyLoadImage
-        src={getImage()}
-        effect="opacity"
-        height="220px"
-        style={{ borderRadius: "10px" }}
-      />
+      <LazyLoad height={250}>
+        <img src={getImage()} className="rowItem__img" />
+      </LazyLoad>
       <p className="rowitem__rating">
         {ratingToPercentage(movie.vote_average.toFixed())}
       </p>
