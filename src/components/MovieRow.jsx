@@ -14,7 +14,14 @@ const MovieRow = ({ fetchUrl, title }) => {
 
   const { data, isLoading } = useQuery(
     ["movies", fetchUrl],
-    async () => await fetchMovies(fetchUrl)
+    async () => await fetchMovies(fetchUrl),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnmount: false,
+      refetchOnReconnect: false,
+      retry: false,
+      staleTime: 60 * 60 * 60,
+    }
   );
   const movies = data?.data?.results;
 

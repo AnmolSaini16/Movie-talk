@@ -6,29 +6,25 @@ const RowItem = ({ movie }) => {
   const baseUrl = "https://image.tmdb.org/t/p/original/";
 
   const ratingToPercentage = (n) => {
-    return (n * 10).toFixed() + "%";
+    return n * 10 + "%";
   };
 
-  const imagePath = !movie.poster_path
-    ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxJNoiNZOGpeAZDBbBa_6Knn1y4ItrZDkzvpI6uUfV2WQP1bDYnMpvz1Df9GL1CxnHFkc&usqp=CAU"
-    : `${baseUrl}${movie.poster_path}`;
+  const getImage = () => {
+    if (!movie.poster_path)
+      return "https://strykerslev.com/wp-content/uploads/2021/05/noPhoto.png";
+    return `${baseUrl}${movie.poster_path}`;
+  };
 
   return (
     <div className="rowitem">
-      {/* <img
-        className="rowItem__img"
-        src={movie.poster_path ? `${baseUrl}${movie.poster_path}` : "Loading"}
-        alt=""
-        loading="lazy"
-      /> */}
       <LazyLoadImage
-        src={imagePath}
+        src={getImage()}
         effect="opacity"
         height="220px"
         style={{ borderRadius: "10px" }}
       />
       <p className="rowitem__rating">
-        {ratingToPercentage(movie.vote_average)}
+        {ratingToPercentage(movie.vote_average.toFixed())}
       </p>
       <p className="rowitem__title">
         {movie?.original_name || movie?.name || movie?.title}

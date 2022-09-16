@@ -12,15 +12,16 @@
 
 .rowitem__rating {
     position: absolute;
-    top: 192px;
+    top: 190px;
     left: 10px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 999px;
     border: 2px solid green;
-    padding: 9px 5px;
+    padding: 12px 6px;
     color: whitesmoke;
     font-size: 0.8rem;
     font-weight: bold;
+   
 }
 
 

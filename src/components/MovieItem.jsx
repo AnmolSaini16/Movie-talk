@@ -11,7 +11,7 @@ import Nav from "./Nav";
 const MovieItem = () => {
   const params = useParams();
   const [reviews, setReviews] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const API_KEY = "edccfc1e796824b9d5eee1575f81badc";
   const baseUrl = "https://image.tmdb.org/t/p/original/";
 
@@ -23,16 +23,25 @@ const MovieItem = () => {
 
   const { data } = useQuery(
     ["movie", params.movieId],
-    async () => await fetchMovie()
+    async () => await fetchMovie(),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnmount: false,
+      refetchOnReconnect: false,
+      retry: false,
+      staleTime: 60 * 60 * 60,
+    }
   );
   const movie = data?.data;
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       const response = await axios.get(
         `movie/${params.movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
       );
       setReviews(response.data.results);
+      setLoading(false);
       return response;
     }
 
@@ -40,7 +49,7 @@ const MovieItem = () => {
   }, [params.movieId]);
 
   const ratingToPercentage = (n) => {
-    return (n * 10).toFixed() + "%";
+    return n * 10 + "%";
   };
 
   const opts = {
@@ -76,8 +85,8 @@ const MovieItem = () => {
             <h4 className="movieItem__rightContent__ratingGenre">
               <span>
                 <h3 className="movieItem__rightContent__rating">
-                  {movie?.vote_average
-                    ? ratingToPercentage(movie?.vote_average)
+                  {movie
+                    ? ratingToPercentage(movie?.vote_average.toFixed())
                     : "00%"}
                 </h3>
               </span>
@@ -91,7 +100,7 @@ const MovieItem = () => {
             <p>{movie?.overview}</p>
             <YouTube
               className="movieItem__rightContent__player"
-              videoId={movie?.videos?.results[0].key}
+              videoId={movie?.videos?.results[0]?.key}
               opts={opts}
             />
           </div>
@@ -103,7 +112,7 @@ const MovieItem = () => {
         </div>
       </div>
 
-      {!reviews.length ? (
+      {!reviews.length && loading === false ? (
         <h1 className="no__reviews">No reviews posted till now 😔</h1>
       ) : (
         <div className="movie__reviews">

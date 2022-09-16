@@ -11,7 +11,13 @@ const TVRow = ({ fetchUrl, title }) => {
     return axios.get(fetchUrl);
   };
 
-  const { data, isLoading } = useQuery(["TvItems", fetchUrl], getTvShows);
+  const { data, isLoading } = useQuery(["TvItems", fetchUrl], getTvShows, {
+    refetchOnWindowFocus: false,
+    refetchOnmount: false,
+    refetchOnReconnect: false,
+    retry: false,
+    staleTime: 60 * 60 * 60,
+  });
   const TvItems = data?.data?.results;
 
   const override = css`

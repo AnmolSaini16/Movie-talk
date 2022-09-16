@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -17,10 +17,17 @@ function App() {
   const user = useSelector(selectuser);
   const queryClient = new QueryClient();
 
+  const getUser = () => {
+    const userLogged = sessionStorage.getItem("user");
+    if (userLogged) return userLogged;
+    sessionStorage.setItem("user", user);
+    return user;
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        {!user ? (
+        {!getUser() ? (
           <LoginScreen />
         ) : (
           <Routes>

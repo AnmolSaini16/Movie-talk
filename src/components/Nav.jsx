@@ -1,29 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import { useLocation, useNavigate } from "react-router-dom";
-
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import AnimationIcon from "@mui/icons-material/Animation";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { logout } from "../features/userSlice";
-import { useDispatch } from "react-redux";
 
 const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
 
   const [url, setUrl] = useState(null);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   useEffect(() => {
     setUrl(location.pathname);
@@ -61,28 +48,6 @@ const Nav = () => {
         >
           TV Shows
         </p>
-      </div>
-      <div className="nav__right">
-        <AccountCircleIcon
-          className="nav__profileLogo"
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
-        />
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            "aria-labelledby": "basic-button",
-          }}
-        >
-          <MenuItem>Hi! 🚀</MenuItem>
-          <MenuItem onClick={() => dispatch(logout())}>Logout</MenuItem>
-        </Menu>
       </div>
     </div>
   );

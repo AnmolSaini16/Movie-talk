@@ -37,7 +37,7 @@
 }
 .movieItem__rightContent__rating {
     border: 3px solid green;
-    padding: 10px 5px;
+    padding: 12px 4px;
     border-radius: 999px;
 }
 .movieItem__rightContent__genre {
@@ -61,8 +61,6 @@
 .movieItem__rightContent__player {
     padding-top: 20px;
 }
-
-
 
 .movie__reviews {
     width: 82%;

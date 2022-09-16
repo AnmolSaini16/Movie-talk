@@ -38,24 +38,30 @@ const SearchPageRightMovies = ({ params }) => {
 
   return (
     <div className="searchPageRightMovies">
-      {movies.map((movie) => (
-        <Link to={`/clickedmovieitem/${movie.id}`} key={movie.id}>
-          <div className="searchPage__movies__row">
-            <img
-              className="searchPage__img"
-              src={`${baseUrl}${movie?.poster_path}`}
-              alt=""
-            />
-            <p className="searchPage__movies__title">
-              {movie?.original_name || movie?.name || movie?.title}
-            </p>
-            <h6>Release Date: {movie.release_date || movie.first_air_date}</h6>
-            <p className="searchpage__rating__rating">
-              Rating: {ratingToPercentage(movie.vote_average)}
-            </p>
-          </div>
-        </Link>
-      ))}
+      {movies.length === 0 && loading === false ? (
+        <h2>No results found 😔</h2>
+      ) : (
+        movies.map((movie) => (
+          <Link to={`/clickedmovieitem/${movie.id}`} key={movie.id}>
+            <div className="searchPage__movies__row">
+              <img
+                className="searchPage__img"
+                src={`${baseUrl}${movie?.poster_path}`}
+                alt=""
+              />
+              <p className="searchPage__movies__title">
+                {movie?.original_name || movie?.name || movie?.title}
+              </p>
+              <h6>
+                Release Date: {movie.release_date || movie.first_air_date}
+              </h6>
+              <p className="searchpage__rating__rating">
+                Rating: {ratingToPercentage(movie.vote_average)}
+              </p>
+            </div>
+          </Link>
+        ))
+      )}
       <ClipLoader
         loading={loading}
         css={override}
