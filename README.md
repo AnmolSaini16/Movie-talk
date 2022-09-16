@@ -8,6 +8,7 @@
    * Material UI for icons and themes
    * Axios for fetching API
    * React-Query
+   * Lazy Loading for better performance
    
   
 ![screencapture-movie-reviews-6406f-firebaseapp-2022-05-08-12_38_41](https://user-images.githubusercontent.com/72123368/167285771-bfd1b48f-064a-4624-a17b-20eddec6b545.png)
