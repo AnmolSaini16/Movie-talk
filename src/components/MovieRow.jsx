@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import axios from "../axios";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -18,12 +18,10 @@ const MovieRow = ({ fetchUrl, title }) => {
     {
       refetchOnWindowFocus: false,
       refetchOnmount: false,
-      refetchOnReconnect: false,
-      retry: false,
       staleTime: 60 * 60 * 60,
     }
   );
-  const movies = data?.data?.results;
+  const movies = data?.data?.results.slice(0, 12);
 
   const override = css`
     display: block;
@@ -56,4 +54,4 @@ const MovieRow = ({ fetchUrl, title }) => {
   );
 };
 
-export default memo(MovieRow);
+export default MovieRow;

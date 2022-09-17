@@ -14,11 +14,9 @@ const TVRow = ({ fetchUrl, title }) => {
   const { data, isLoading } = useQuery(["TvItems", fetchUrl], getTvShows, {
     refetchOnWindowFocus: false,
     refetchOnmount: false,
-    refetchOnReconnect: false,
-    retry: false,
     staleTime: 60 * 60 * 60,
   });
-  const TvItems = data?.data?.results;
+  const TvItems = data?.data?.results.slice(0, 12);
 
   const override = css`
     display: block;
