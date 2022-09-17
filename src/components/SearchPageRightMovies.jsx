@@ -9,7 +9,10 @@ import "./SearchPageRight.css";
 
 const SearchPageRightMovies = ({ params }) => {
   const [movies, setMovies] = useState([]);
-  let [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [imgLoading, setImageLoading] = useState(true);
+  const placeholderImage =
+    "https://cdn.shopify.com/s/files/1/0588/5306/4899/t/14/assets/product-placeholder.jpg?v=65808927917748496431643306019";
 
   const API_KEY = "edccfc1e796824b9d5eee1575f81badc";
   const baseUrl = "https://image.tmdb.org/t/p/original/";
@@ -44,10 +47,18 @@ const SearchPageRightMovies = ({ params }) => {
         movies.map((movie) => (
           <Link to={`/clickedmovieitem/${movie.id}`} key={movie.id}>
             <div className="searchPage__movies__row">
+              {imgLoading ? (
+                <img src={placeholderImage} className="searchPage__img" />
+              ) : null}
               <img
                 className="searchPage__img"
-                src={`${baseUrl}${movie?.poster_path}`}
-                alt=""
+                src={
+                  movie.poster_path
+                    ? `${baseUrl}${movie?.poster_path}`
+                    : placeholderImage
+                }
+                onLoad={() => setImageLoading(false)}
+                style={imgLoading ? { visibility: "hidden" } : {}}
               />
               <p className="searchPage__movies__title">
                 {movie?.original_name || movie?.name || movie?.title}

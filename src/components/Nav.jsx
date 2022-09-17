@@ -36,13 +36,13 @@ const Nav = () => {
           className={`nav__links ${url === "/movies" ? "active" : ""}`}
           onClick={() => navigate("/movies")}
         >
-          Movies
+          MOVIES
         </p>
         <p
           className={`nav__links ${url === "/tvshows" ? "active" : ""}`}
           onClick={() => navigate("/tvshows")}
         >
-          TV Shows
+          TV SHOWS
         </p>
       </div>
     </div>
