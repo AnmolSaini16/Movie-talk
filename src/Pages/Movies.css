@@ -1,5 +1,5 @@
 .movies_rows {
-    margin: 84px 60px;
+    margin: 84px 0px 0px 50px;
 }
 .movies_rows > h1 {
     display: flex;
@@ -26,7 +26,7 @@
 
 @media only screen and (max-width: 460px) {
     .movies_rows {
-        margin: 70px 0 0 0;
+        margin: 70px 0 0 20px;
     }
     .movies_rows > h1 {
         margin-left: 2px;

@@ -39,7 +39,11 @@ const SearchPageRightTVShows = ({ params }) => {
           <Link to={`/clickedTvitem/${movie.id}`} key={movie.id}>
             <div className="searchPage__movies__row">
               {imgLoading ? (
-                <img src={placeholderImage} className="searchPage__img" />
+                <img
+                  src={placeholderImage}
+                  className="searchPage__img"
+                  loading="lazy"
+                />
               ) : null}
               <img
                 className="searchPage__img"
@@ -50,6 +54,7 @@ const SearchPageRightTVShows = ({ params }) => {
                 }
                 onLoad={() => setImageLoading(false)}
                 style={imgLoading ? { visibility: "hidden" } : {}}
+                loading="lazy"
               />
               <p className="searchPage__movies__title">
                 {movie?.original_name || movie?.name || movie?.title}

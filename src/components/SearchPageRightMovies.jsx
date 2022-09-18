@@ -48,7 +48,11 @@ const SearchPageRightMovies = ({ params }) => {
           <Link to={`/clickedmovieitem/${movie.id}`} key={movie.id}>
             <div className="searchPage__movies__row">
               {imgLoading ? (
-                <img src={placeholderImage} className="searchPage__img" />
+                <img
+                  src={placeholderImage}
+                  className="searchPage__img"
+                  loading="lazy"
+                />
               ) : null}
               <img
                 className="searchPage__img"
@@ -59,6 +63,7 @@ const SearchPageRightMovies = ({ params }) => {
                 }
                 onLoad={() => setImageLoading(false)}
                 style={imgLoading ? { visibility: "hidden" } : {}}
+                loading="lazy"
               />
               <p className="searchPage__movies__title">
                 {movie?.original_name || movie?.name || movie?.title}

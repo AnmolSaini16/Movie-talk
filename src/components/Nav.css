@@ -40,7 +40,7 @@
     margin: 0 10px;  
     color: whitesmoke;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.8rem;
     display: flex;
 }
 .nav__links:hover {

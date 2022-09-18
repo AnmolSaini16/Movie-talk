@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./RowItem.css";
-import LazyLoad from "react-lazyload";
 
 const RowItem = ({ movie }) => {
   const baseUrl = "https://image.tmdb.org/t/p/original/";
@@ -14,19 +13,18 @@ const RowItem = ({ movie }) => {
 
   return (
     <div className="rowitem">
-      <LazyLoad height={"100%"}>
-        {imgLoading ? (
-          <img src={placeholderImage} className="rowItem__img" />
-        ) : null}
-        <img
-          src={`${baseUrl}${movie.poster_path}`}
-          style={imgLoading ? { visibility: "hidden" } : {}}
-          className="rowItem__img"
-          onLoad={() => setImageLoading(false)}
-        />
-      </LazyLoad>
+      {imgLoading ? (
+        <img src={placeholderImage} className="rowItem__img" loading="lazy" />
+      ) : null}
+      <img
+        src={`${baseUrl}${movie.poster_path}`}
+        style={imgLoading ? { visibility: "hidden" } : {}}
+        className="rowItem__img"
+        onLoad={() => setImageLoading(false)}
+        loading="lazy"
+      />
       <p className="rowitem__rating">
-        {ratingToPercentage(movie.vote_average.toFixed())}
+        {ratingToPercentage(movie?.vote_average?.toFixed())}
       </p>
       <p className="rowitem__title">
         {movie?.original_name || movie?.name || movie?.title}

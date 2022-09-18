@@ -1,5 +1,5 @@
 .tvshows__rows {
-    margin: 84px 60px
+    margin: 84px 0px 0px 50px
 }
 
 .tvshows__rows > h1 {
@@ -27,7 +27,7 @@
 
 @media only screen and (max-width: 460px) {
     .tvshows__rows {
-        margin: 70px 0 0 0;
+        margin: 70px 0 0 20px;
     }
     .tvshows__rows > h1 {
         margin-left: 2px;

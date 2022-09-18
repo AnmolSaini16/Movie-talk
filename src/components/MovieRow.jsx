@@ -17,11 +17,9 @@ const MovieRow = ({ fetchUrl, title }) => {
     async () => await fetchMovies(fetchUrl),
     {
       refetchOnWindowFocus: false,
-      refetchOnmount: false,
-      staleTime: 60 * 60 * 60,
     }
   );
-  const movies = data?.data?.results.slice(0, 12);
+  const movies = data?.data?.results;
 
   const override = css`
     display: block;
