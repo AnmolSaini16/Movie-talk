@@ -28,7 +28,7 @@
 
 @media only screen and (max-width: 460px) {
     .homeScreen__rows {
-        margin: 0px;
+        margin: 0px 0px 0px 20px;
     }
     .homeScreen__rows > h1 {
         margin-left: 20px;
