@@ -53,8 +53,8 @@ const MovieItem = () => {
   };
 
   const opts = {
-    height: "200",
-    width: "320",
+    height: "180",
+    width: "280",
     autoplay: 1,
   };
 

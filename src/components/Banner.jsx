@@ -38,7 +38,7 @@ const Banner = () => {
       <div className="banner__contents">
         <h1>
           {movie?.original_name || movie?.name || movie?.title}{" "}
-          <span className="rating">({movie.vote_average}★)</span>
+          <span className="rating">({movie?.vote_average}★)</span>
         </h1>
         <h3>{reduceDescription(movie.overview, 150)}</h3>
       </div>

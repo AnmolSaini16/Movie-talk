@@ -43,8 +43,8 @@ const TVItem = () => {
   };
 
   const opts = {
-    height: "280",
-    width: "420",
+    height: "180",
+    width: "280",
     autoplay: 1,
   };
 
@@ -69,13 +69,15 @@ const TVItem = () => {
           </div>
           <div className="movieItem__rightContent">
             <h1>
-              {movie?.original_name || movie?.name || movie?.title} (
-              {movie.release_date})
+              {movie?.original_name || movie?.name || movie?.title}{" "}
+              {movie ? `(${movie.release_date})` : "--"}
             </h1>
             <h4 className="movieItem__rightContent__ratingGenre">
               <span>
                 <h3 className="movieItem__rightContent__rating">
-                  {ratingToPercentage(movie.vote_average)}
+                  {movie
+                    ? ratingToPercentage(movie?.vote_average?.toFixed())
+                    : "00%"}
                 </h3>
               </span>
               <p className="movieItem__rightContent__genre">
