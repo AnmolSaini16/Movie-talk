@@ -4,8 +4,6 @@ import "./RowItem.css";
 const RowItem = ({ movie }) => {
   const baseUrl = "https://image.tmdb.org/t/p/original/";
   const [imgLoading, setImageLoading] = useState(true);
-  const placeholderImage =
-    "https://cdn.shopify.com/s/files/1/0588/5306/4899/t/14/assets/product-placeholder.jpg?v=65808927917748496431643306019";
 
   const ratingToPercentage = (n) => {
     return n * 10 + "%";
@@ -14,7 +12,7 @@ const RowItem = ({ movie }) => {
   return (
     <div className="rowitem">
       {imgLoading ? (
-        <img src={placeholderImage} className="rowItem__img" loading="lazy" />
+        <img src="placeholder.webp" className="rowItem__img" loading="lazy" />
       ) : null}
       <img
         src={`${baseUrl}${movie.poster_path}`}

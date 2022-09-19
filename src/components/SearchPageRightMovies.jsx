@@ -49,7 +49,7 @@ const SearchPageRightMovies = ({ params }) => {
             <div className="searchPage__movies__row">
               {imgLoading ? (
                 <img
-                  src={placeholderImage}
+                  src="placeholder.webp"
                   className="searchPage__img"
                   loading="lazy"
                 />
@@ -59,7 +59,7 @@ const SearchPageRightMovies = ({ params }) => {
                 src={
                   movie.poster_path
                     ? `${baseUrl}${movie?.poster_path}`
-                    : placeholderImage
+                    : "placeholder.webp"
                 }
                 onLoad={() => setImageLoading(false)}
                 style={imgLoading ? { visibility: "hidden" } : {}}
