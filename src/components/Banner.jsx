@@ -40,7 +40,7 @@ const Banner = () => {
           {movie?.original_name || movie?.name || movie?.title}{" "}
           <span className="rating">({movie?.vote_average}★)</span>
         </h1>
-        <h3>{reduceDescription(movie.overview, 150)}</h3>
+        <h3>{reduceDescription(movie?.overview, 150)}</h3>
       </div>
       <div className="banner__searchBar">
         <SearchBar />

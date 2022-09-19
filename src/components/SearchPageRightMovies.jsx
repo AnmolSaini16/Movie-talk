@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../axios";
-
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
-
 import "./SearchPageRight.css";
+import { LazyImage } from "./LazyImage";
 
 const SearchPageRightMovies = ({ params }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [imgLoading, setImageLoading] = useState(true);
-  const placeholderImage =
-    "https://cdn.shopify.com/s/files/1/0588/5306/4899/t/14/assets/product-placeholder.jpg?v=65808927917748496431643306019";
 
   const API_KEY = "edccfc1e796824b9d5eee1575f81badc";
   const baseUrl = "https://image.tmdb.org/t/p/original/";
@@ -47,23 +43,9 @@ const SearchPageRightMovies = ({ params }) => {
         movies.map((movie) => (
           <Link to={`/clickedmovieitem/${movie.id}`} key={movie.id}>
             <div className="searchPage__movies__row">
-              {imgLoading ? (
-                <img
-                  src="placeholder.webp"
-                  className="searchPage__img"
-                  loading="lazy"
-                />
-              ) : null}
-              <img
-                className="searchPage__img"
-                src={
-                  movie.poster_path
-                    ? `${baseUrl}${movie?.poster_path}`
-                    : "placeholder.webp"
-                }
-                onLoad={() => setImageLoading(false)}
-                style={imgLoading ? { visibility: "hidden" } : {}}
-                loading="lazy"
+              <LazyImage
+                isRowItemImg={false}
+                src={`${baseUrl}${movie?.poster_path}`}
               />
               <p className="searchPage__movies__title">
                 {movie?.original_name || movie?.name || movie?.title}
