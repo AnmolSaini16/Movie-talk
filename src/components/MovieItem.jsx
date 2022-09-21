@@ -25,7 +25,6 @@ const MovieItem = () => {
     ["movie", params.movieId],
     async () => await fetchMovie(),
     {
-      enabled: false,
       refetchOnWindowFocus: false,
       staleTime: Infinity,
     }

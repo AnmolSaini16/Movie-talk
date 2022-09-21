@@ -16,7 +16,6 @@ const MovieRow = ({ fetchUrl, title }) => {
     ["movies", fetchUrl],
     async () => await fetchMovies(fetchUrl),
     {
-      enabled: false,
       refetchOnWindowFocus: false,
       staleTime: Infinity,
     }
