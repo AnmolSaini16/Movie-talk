@@ -25,11 +25,9 @@ const MovieItem = () => {
     ["movie", params.movieId],
     async () => await fetchMovie(),
     {
+      enabled: false,
       refetchOnWindowFocus: false,
-      refetchOnmount: false,
-      refetchOnReconnect: false,
-      retry: false,
-      staleTime: 60 * 60 * 60,
+      staleTime: Infinity,
     }
   );
   const movie = data?.data;
