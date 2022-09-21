@@ -12,7 +12,9 @@ const TVRow = ({ fetchUrl, title }) => {
   };
 
   const { data, isLoading } = useQuery(["TvItems", fetchUrl], getTvShows, {
+    enabled: false,
     refetchOnWindowFocus: false,
+    staleTime: Infinity,
   });
   const TvItems = data?.data?.results;
 
