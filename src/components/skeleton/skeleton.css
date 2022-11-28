@@ -1,0 +1,22 @@
+.skeletonRowContaner {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.skeletonRowItem {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 14px;
+    transition: all 0.3s;
+    max-width: 160px;
+    height: auto;
+}
+
+.skeletonRowImage {
+   margin-bottom: 14px;
+}
+
+.skeletonRowItem > p {
+    padding: 4px 0;
+}

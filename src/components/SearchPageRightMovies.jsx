@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../axios";
-import ClipLoader from "react-spinners/ClipLoader";
-import { css } from "@emotion/react";
 import "./SearchPageRight.css";
 import { LazyImage } from "./LazyImage";
+import MovieRowSkeleton from "./skeleton";
 
 const SearchPageRightMovies = ({ params }) => {
   const [movies, setMovies] = useState([]);
@@ -29,16 +28,12 @@ const SearchPageRightMovies = ({ params }) => {
     return (n * 10).toFixed() + "%";
   };
 
-  const override = css`
-    display: block;
-    margin: auto auto;
-    border-color: rgb(26, 208, 177);
-  `;
-
   return (
     <div className="searchPageRightMovies">
       {movies.length === 0 && loading === false ? (
         <h2>No results found 😔</h2>
+      ) : loading ? (
+        <MovieRowSkeleton />
       ) : (
         movies.map((movie) => (
           <Link to={`/clickedmovieitem/${movie.id}`} key={movie.id}>
@@ -60,12 +55,6 @@ const SearchPageRightMovies = ({ params }) => {
           </Link>
         ))
       )}
-      <ClipLoader
-        loading={loading}
-        css={override}
-        size={120}
-        speedMultiplier={1.5}
-      />
     </div>
   );
 };
