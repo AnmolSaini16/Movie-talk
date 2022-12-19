@@ -36,9 +36,14 @@
     margin-bottom: 30px;
 }
 .movieItem__rightContent__rating {
-    border: 3px solid green;
-    padding: 12px 4px;
+    border: 2px solid green;
     border-radius: 999px;
+    color: whitesmoke;
+    min-width: 60px; 
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .movieItem__rightContent__genre {
     display: flex;
@@ -63,7 +68,7 @@
 }
 
 .movie__reviews {
-    width: 82%;
+    width: 70%;
     margin: 40px auto;
     overflow-y: scroll;
     max-height: 580px;
@@ -122,6 +127,7 @@
 
 .movie__reviews__row__right__content {
     padding-top: 14px;
+    max-width: 98%;
 }
 
 .movie__reviews__button {

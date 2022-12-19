@@ -1,6 +1,5 @@
 import React from "react";
 import "./RowItem.css";
-import { LazyImage } from "./LazyImage";
 
 const RowItem = ({ movie }) => {
   const baseUrl = "https://image.tmdb.org/t/p/original/";
@@ -10,9 +9,9 @@ const RowItem = ({ movie }) => {
   };
   return (
     <div className="rowitem">
-      <LazyImage isRowItemImg={true} src={`${baseUrl}${movie.poster_path}`} />
+      <img className="rowItem__img" src={`${baseUrl}${movie.poster_path}`} />
       <p className="rowitem__rating">
-        {ratingToPercentage(movie?.vote_average?.toFixed())}
+        {ratingToPercentage(movie?.vote_average.toFixed(1))}
       </p>
       <p className="rowitem__title">
         {movie?.original_name || movie?.name || movie?.title}

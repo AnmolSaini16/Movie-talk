@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../axios";
 import "./SearchPageRight.css";
-import { LazyImage } from "./LazyImage";
 import MovieRowSkeleton from "./skeleton";
 
 const SearchPageRightMovies = ({ params }) => {
@@ -38,8 +37,8 @@ const SearchPageRightMovies = ({ params }) => {
         movies.map((movie) => (
           <Link to={`/clickedmovieitem/${movie.id}`} key={movie.id}>
             <div className="searchPage__movies__row">
-              <LazyImage
-                isRowItemImg={false}
+              <img
+                className="searchPage__img"
                 src={`${baseUrl}${movie?.poster_path}`}
               />
               <p className="searchPage__movies__title">
