@@ -40,6 +40,7 @@ const SearchPageRightMovies = ({ params }) => {
               <img
                 className="searchPage__img"
                 src={`${baseUrl}${movie?.poster_path}`}
+                loading="lazy"
               />
               <p className="searchPage__movies__title">
                 {movie?.original_name || movie?.name || movie?.title}

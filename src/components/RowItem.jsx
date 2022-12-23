@@ -9,7 +9,11 @@ const RowItem = ({ movie }) => {
   };
   return (
     <div className="rowitem">
-      <img className="rowItem__img" src={`${baseUrl}${movie.poster_path}`} />
+      <img
+        loading="lazy"
+        className="rowItem__img"
+        src={`${baseUrl}${movie.poster_path}`}
+      />
       <p className="rowitem__rating">
         {ratingToPercentage(movie?.vote_average.toFixed(1))}
       </p>
